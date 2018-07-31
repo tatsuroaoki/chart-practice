@@ -1,4 +1,4 @@
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', {'packages':['corechart', 'timeline']});
 
 google.charts.setOnLoadCallback(drawChart);
 
@@ -65,8 +65,27 @@ function drawAllocationChart() {
   chart.draw(data, options);
 }
 
+function drawTimelineChart(){
+  var container = document.getElementById('timeline');
+  var chart = new google.visualization.Timeline(container);
+  var dataTable = new google.visualization.DataTable();
+
+  dataTable.addColumn({ type: 'string', id: 'Phase' });
+  dataTable.addColumn({ type: 'date', id: 'Start' });
+  dataTable.addColumn({ type: 'date', id: 'End' });
+  dataTable.addRows([
+    [ 'Complete General Education Requirements', new Date(2018, 08, 01), new Date(2019, 4, 1)],
+    [ 'Choose Major', new Date(2019, 5, 1),  new Date(2019, 7, 1)],
+    [ 'One Major Course Per Semester', new Date(2019, 8, 01),  new Date(2020, 04, 01)],
+    [ 'Three Major Courses Per Semester', new Date(2020, 8, 1),  new Date(2022, 4, 1)]
+  ]);
+
+  chart.draw(dataTable);
+}
+
 
 window.onload = function(){
+  drawTimelineChart()
   // Event listeners for each button: clear all charts, redraw requested one
   document.getElementById('semester-trigger').addEventListener('click', function(){
       document.getElementById('semesters').innerHTML = ""
