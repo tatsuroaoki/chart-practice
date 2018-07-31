@@ -35,7 +35,6 @@ function drawSemestersChart() {
       ['Fall 2021', 3, '#114789'],
       ['Spring 2022', 3, '#8faeff']
     ]
-
   );
   var options = {'title':'Each Dollar Donated Goes To',
                  'width':400,
