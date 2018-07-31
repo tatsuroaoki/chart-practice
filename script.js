@@ -2,6 +2,7 @@ google.charts.load('current', {'packages':['corechart']});
 
 google.charts.setOnLoadCallback(drawChart);
 google.charts.setOnLoadCallback(drawAllocationChart);
+google.charts.setOnLoadCallback(drawSemestersChart);
 
 function drawChart() {
   var data = new google.visualization.DataTable();
@@ -18,6 +19,30 @@ function drawChart() {
                  'height':300};
 
   var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+
+function drawSemestersChart() {
+  var data = new google.visualization.arrayToDataTable(
+    [
+      ['Semester', 'Credits', { role: 'style' }],
+      ['Fall 2018', 0, '#114789'],
+      ['Spring 2019', 0, '#8faeff'],
+      ['Fall 2019', 1, '#114789'],
+      ['Spring 2020', 1, '#8faeff'],
+      ['Fall 2020', 3, '#114789'],
+      ['Spring 2021', 3, '#8faeff'],
+      ['Fall 2021', 3, '#114789'],
+      ['Spring 2022', 3, '#8faeff']
+    ]
+
+  );
+  var options = {'title':'Each Dollar Donated Goes To',
+                 'width':400,
+                 'height':300
+                };
+
+  var chart = new google.visualization.BarChart(document.getElementById('semesters'));
   chart.draw(data, options);
 }
 
