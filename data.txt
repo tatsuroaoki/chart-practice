@@ -18,7 +18,3 @@ study by date, as well as a bar chart (https://developers.google.com/chart/inter
 classes in major area will be completed in each of the eight semesters (fall and spring, 2019 through 2022) of their study.
 
 The colors used for the charts should be shades of blue.
-
-
-
-
