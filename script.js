@@ -1,4 +1,4 @@
-console.log("let's build some charts!")
+//console.log("let's build some charts!")
 
 // Load the Visualization API and the corechart package.
 google.charts.load('current', {'packages':['corechart']});
@@ -87,48 +87,61 @@ function drawSemesterChart() {
 	var chart = new google.visualization.BarChart(document.getElementById('semesters'));
 	chart.draw(data, options);
 }
-//function drawSemesterTimelineChart() {
-//	var container = document.getElementById('semester-timeline');
-//	var chart = new google.visualization.Timeline(container);
-//	var dataTable = new google.visualization.DataTable();
-//	dataTable.addColumn({ type: 'string', id: 'Category'})
-//	dataTable.addColumn({ type: 'string', id: 'Semesters'});
-//	dataTable.addColumn({ type: 'date', id: 'Start' });
-//	dataTable.addColumn({ type: 'date', id: 'End' });
-//	dataTable.addRows([
-//		['General Requirements', '1-2', new Date(2018, 9, 1), new Date(2019, 5, 31) ],
-//		['Major', '3-4', new Date(2019, 9, 1), new Date(2020, 5, 1) ],
-//		['OK', 'OK',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]]);
-//
-//	var options = {
-//		timeline: { showRowLabels: false }
-//	};
-//
-//	chart.draw(dataTable, options);
-//}
+function drawSemesterTimelineChart() {
+	var container = document.getElementById('semester-timeline');
+	var chart = new google.visualization.Timeline(container);
+	var dataTable = new google.visualization.DataTable();
+	dataTable.addColumn({ type: 'string', id: 'Category'})
+	dataTable.addColumn({ type: 'string', id: 'Classes'});
+	dataTable.addColumn({ type: 'date', id: 'Start' });
+	dataTable.addColumn({ type: 'date', id: 'End' });
+	dataTable.addRows([
+		['General Requiremens', '8', new Date(2018,9,1), new Date(2019,5,1)],
+		['Pick a Major', '8', new Date(2019,6,1), new Date(2019,8,1)],
+		['One Major Course per Semester', '2',  new Date(2019,9,1),  new Date(2020,5,1)],
+		['Three Majors Courses per Semester', '12', new Date(2020,9,1), new Date(2022,5,1)]])
+
+	var options = {
+		timeline: { showRowLabels: true,
+												},
+		'width':700,
+		'height':1000 };
+	chart.draw(dataTable, options);
+}
 
 window.onload = function() {
 	// Event listeners for each button: clear all charts, redraw requested one
 	document.getElementById('semester-trigger').addEventListener('click', function(){
-		document.getElementById('semesters').innerHTML - "";
-		document.getElementById('chart-div').innerHTML="";
-		document.getElementById('allocation').innerHTML = "";
-		drawSemesterChartChart();
+		document.getElementById('semesters').innerHTML = "";
+		document.getElementById('chart_div').innerHTML = "";
+		document.getElementById('allocations').innerHTML = "";
+		document.getElementById('semester-timeline').innerHTML= "";
+		drawSemesterChart();
 	});
 
 
 	document.getElementById('bowling-trigger').addEventListener('click', function(){
-		document.getElementById('semesters').innerHTML - "";
-		document.getElementById('chart-div').innerHTML="";
-		document.getElementById('allocation').innerHTML = "";
+		document.getElementById('semesters').innerHTML = "";
+		document.getElementById('chart_div').innerHTML = "";
+		document.getElementById('allocations').innerHTML = "";
+		document.getElementById('semester-timeline').innerHTML= "";
 		drawChart();
 	});
 
 
 	document.getElementById('allocation-trigger').addEventListener('click', function(){
-		document.getElementById('semesters').innerHTML - "";
-		document.getElementById('chart-div').innerHTML="";
-		document.getElementById('allocation').innerHTML = "";
+		document.getElementById('semesters').innerHTML = "";
+		document.getElementById('chart_div').innerHTML = "";
+		document.getElementById('allocations').innerHTML = "";
+		document.getElementById('semester-timeline').innerHTML= "";
 		drawAllocationChart();
+	});
+
+	document.getElementById('semester-timeline-trigger').addEventListener('click', function(){
+		document.getElementById('semesters').innerHTML = "";
+		document.getElementById('chart_div').innerHTML = "";
+		document.getElementById('allocations').innerHTML = "";
+		document.getElementById('semester-timeline').innerHTML= "";
+		drawSemesterTimelineChart();
 	});
 }
